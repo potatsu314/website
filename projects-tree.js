@@ -3,11 +3,27 @@ const projectsData = {
   type: 'dir',
   children: [
     {
+      name: 'website/',
+      type: 'dir',
+      description: 'this website',
+      children: [
+        {
+          name: 'github',
+          type: 'file',
+          link: 'https://github.com/potatsu314/website',
+        },
+      ],
+    },
+    {
       name: 'uwulangpack/',
       type: 'dir',
       description: 'tool for creation of uwuified languages for minecraft :3',
       children: [
-        { name: 'github', type: 'file', link: 'https://github.com/potatsu314/uwulangpack' },
+        {
+          name: 'github',
+          type: 'file',
+          link: 'https://github.com/potatsu314/uwulangpack',
+        },
       ],
     },
   ],
@@ -53,7 +69,7 @@ function generateTree(node, prefix = '') {
     })
   }
 
-  return result;
+  return result
 }
 
 document.addEventListener('DOMContentLoaded', () => {
