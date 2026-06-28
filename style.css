@@ -1,0 +1,118 @@
+:root {
+  --col-black: #141414;
+  --col-white: #cad3f5;
+  /*catppuccin macchiato colors*/
+  --col-blue: #8aadf4;
+  --col-green: #a6da95;
+  --col-red: #ed8796;
+  --col-yellow: #eed49f;
+  --col-purple: #c6a0f6;
+}
+
+body {
+  background-color: var(--col-black);
+  color: var(--col-white);
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 20px;
+}
+
+#app {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.header {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.header .nav-item {
+  color: var(--col-white);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.header .nav-item:hover, .header .nav-item.active {
+  color: var(--col-purple);
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.terminal {
+  padding: 20px;
+}
+
+.content {
+  padding: 0 20px 20px 20px;
+}
+
+.term-string {
+  display: block;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.col-blue {
+  color: var(--col-blue);
+}
+
+.col-green {
+  color: var(--col-green);
+}
+
+.col-red {
+  color: var(--col-red);
+}
+
+.col-yellow {
+  color: var(--col-yellow);
+}
+
+.col-purple {
+  color: var(--col-purple);
+}
+
+pre {
+  margin: 10px 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.4;
+  color: var(--col-white);
+  font-family: inherit;
+}
+
+/* Blinking cursor effect */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: var(--col-white);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  from, to { background-color: transparent }
+  50% { background-color: var(--col-white) }
+}
+
+.term-link {
+  color: var(--col-yellow);
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 3px;
+}
+
+.term-link:hover {
+  text-decoration-style: solid;
+}

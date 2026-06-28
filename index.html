@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Tasu's den :3</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="header">
+        <span class="nav-item" id="nav-home" onclick="changeToHome()"
+          >Home</span
+        >
+        <span class="nav-item" id="nav-projects" onclick="changeToProjects()"
+          >Projects</span
+        >
+        <span class="nav-item" id="nav-contact" onclick="changeToContact()"
+          >Contact</span
+        >
+      </div>
+      <div class="terminal">
+        <span class="term-string"
+          ><span class="col-blue">potasu@potasu-web</span>
+          <span class="col-green">~</span></span
+        >
+        <div class="term-string">
+          <span class="col-green">%&nbsp;</span
+          ><span id="term-prompt-head"></span
+          ><span class="cursor" id="cursor-head"></span>
+        </div>
+      </div>
+      <div id="content-home" class="content" style="display: none">
+        <pre class="term-output">
+hey! i'm Tasu :3
+
+i like coding sometimes
+and when i do that... i use either Rust, Python or JS/TS
+
+i'm gay furry little thing that uses arch (how surprising) :3
+
+i like gaming too!
+my fav games are about parkour/climbing (like White Knuckle)
+another one is ULTRAKILL >:3
+
+and well... that's it!
+</pre
+        >
+      </div>
+      <div id="content-projects" class="content" style="display: none">
+        <pre class="term-output" id="projects-tree-output"></pre>
+      </div>
+      <div id="content-contact" class="content" style="display: none">
+        <pre class="term-output"># Contact Information
+
+feel free to contact me!
+
+* <b>Discord</b>: <a href="https://discord.com/users/548824464264134658" class="term-link" target="_blank">@0xxl</a>
+* <b>GitHub</b>: <a href="https://github.com/potatsu314/" class="term-link" target="_blank">github.com/potasu</a></pre>
+      </div>
+    </div>
+    <script src="animated-text.js"></script>
+    <script src="projects-tree.js"></script>
+    <script>
+      const contentHome = document.getElementById('content-home')
+      const contentProjects = document.getElementById('content-projects')
+      const contentContact = document.getElementById('content-contact')
+
+      function setActiveNav(activeId) {
+        document.querySelectorAll('.header .nav-item').forEach((el) => {
+          el.classList.remove('active')
+        })
+        document.getElementById(activeId).classList.add('active')
+      }
+
+      function changeToHome() {
+        animTermPromptHead.stop()
+
+        contentHome.style.display = 'none'
+        contentProjects.style.display = 'none'
+        contentContact.style.display = 'none'
+
+        setActiveNav('nav-home')
+
+        animTermPromptHead.text = 'cd /home/potasu && whoami'
+        animTermPromptHead.onCompleted = () => {
+          contentHome.style.display = 'block'
+        }
+        animTermPromptHead.start()
+      }
+
+      function changeToProjects() {
+        animTermPromptHead.stop()
+
+        contentHome.style.display = 'none'
+        contentProjects.style.display = 'none'
+        contentContact.style.display = 'none'
+
+        setActiveNav('nav-projects')
+
+        animTermPromptHead.text = 'cd /home/potasu/projects && tree'
+        animTermPromptHead.onCompleted = () => {
+          contentProjects.style.display = 'block'
+        }
+        animTermPromptHead.start()
+      }
+
+      function changeToContact() {
+        animTermPromptHead.stop()
+
+        contentHome.style.display = 'none'
+        contentProjects.style.display = 'none'
+        contentContact.style.display = 'none'
+
+        setActiveNav('nav-contact')
+
+        animTermPromptHead.text = 'cd /home/potasu && cat contact.md'
+        animTermPromptHead.onCompleted = () => {
+          contentContact.style.display = 'block'
+        }
+        animTermPromptHead.start()
+      }
+
+      let termPromptHead = document.getElementById('term-prompt-head')
+
+      let animTermPromptHead = new TextAnimation(
+        termPromptHead,
+        'cd /home/potasu && whoami',
+        30,
+      )
+
+      addEventListener('DOMContentLoaded', () => {
+        changeToHome()
+      })
+    </script>
+  </body>
+</html>
